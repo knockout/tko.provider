@@ -904,9 +904,8 @@ function secureBindingsProvider(options) {
     // the binding classes -- defaults to ko bindingsHandlers
     this.bindings = options.bindings || ko.bindingHandlers;
 
-    // Cache the result of parsing binding strings.
-    // TODO
-    // this.cache = {};
+    // A cache across the bindings provider instance.
+    this.cache = {}
 }
 
 function registerBindings(newBindings) {
@@ -974,7 +973,11 @@ function getBindingAccessors(node, context) {
     }
 
     if (sbind_string) {
-        bindings = parser.parse(sbind_string || '');
+        bindings = this.cache[sbind_string];
+        if (!bindings) {
+            bindings = this.cache[sbind_string]
+                = parser.parse(sbind_string || '');
+        }
     }
 
     // emulate ko.components.addBindingsForCustomElement(bindings, node,
