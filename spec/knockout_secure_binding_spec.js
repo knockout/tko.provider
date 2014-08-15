@@ -747,7 +747,7 @@ describe("the parser cache", function () {
             assert.strictEqual(ba1, ba2, 'bak')
             assert.strictEqual(ba1, instance.cache[key], 'bik')
       })
-      it("respects nested lookups"), function () {
+      it("respects nested lookups", function () {
             ko.bindingProvider.instance = instance;
             div.innerHTML =
                "<i data-sbind='text: X'></i>" +
