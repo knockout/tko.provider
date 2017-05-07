@@ -12,6 +12,8 @@
 */
 /* eslint semi: 0 */
 
+import 'core-js/fn/object/assign'
+
 import {
   options, triggerEvent
 } from 'tko.utils';
